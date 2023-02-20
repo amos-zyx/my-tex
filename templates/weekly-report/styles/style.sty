@@ -1,0 +1,61 @@
+% beamer-theme
+\usetheme{metropolis}
+\metroset{block=fill, numbering = fraction}
+
+% cover
+\setbeamertemplate{title page}{
+\begin{minipage}[b][\paperheight]{\textwidth}
+\ifx\inserttitlegraphic\@empty\else\usebeamertemplate*{title graphic}\fi
+\vfill%
+\ifx\inserttitle\@empty\else\usebeamertemplate*{title}\fi
+\vspace*{-5mm}
+\usebeamertemplate*{title separator}
+\ifx\beamer@shortauthor\@empty\else\usebeamertemplate*{author}\fi
+\ifx\insertinstitute\@empty\else\usebeamertemplate*{institute}\fi
+\ifx\insertdate\@empty\else\usebeamertemplate*{date}\fi
+\vfill
+\vspace*{1mm}
+\end{minipage}}
+
+% cover information
+\title{\today}
+\author{}
+\institute{}
+\date{}
+
+% font
+\setCJKmainfont{SourceHanSerifCN-Medium}[
+  ItalicFont = SourceHanSerifCN-Medium,
+  BoldFont = SourceHanSerifCN-Bold,
+  BoldItalicFont = SourceHanSerifCN-Bold
+]
+\setCJKmonofont{Source Han Serif CN}
+\setCJKsansfont{Noto Sans S Chinese}
+
+% math font
+\RequirePackage{newtxmath}
+
+% theorems
+\setbeamertemplate{theorems}[numbered]
+\newtheorem{lem}{引理}
+
+% references
+\PassOptionsToPackage{
+  backend=biber,
+  style=gb7714-2015ms,
+  gbstyle=false,
+  gbalign=gb7714-2015,
+  gbnamefmt=lowercase,
+  doi=true,
+  url=false,
+}{biblatex}
+\RequirePackage{biblatex}
+\defbibheading{subbibliography}{\section{参考文献}}
+
+% define \addinputpath{}
+\makeatletter
+\providecommand*\input@path{}
+\newcommand\addinputpath[1]{
+  \expandafter\def\expandafter\input@path
+  \expandafter{\input@path{#1}}}
+\makeatother

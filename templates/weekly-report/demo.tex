@@ -1,0 +1,43 @@
+\documentclass[10pt]{ctexbeamer}
+
+% my style
+\usepackage{styles/style}
+
+% add input-path
+\addinputpath{contents/}
+
+% image
+\graphicspath{{images/}}
+
+% icon
+\usepackage{pifont}
+
+% references
+\addbibresource{refs.bib} % with biblatex(biber)
+\newcommand{\mycite}[1]{\citetitle{#1} - \citeyear{#1} - \citeauthor{#1}\cite{#1}}
+
+% my macros
+\usepackage{styles/my-macros}
+\newcommand{\Tip}[1]{{\color{red!75}{#1}}}
+
+% page break
+\newcommand{\ppause}{{}} % cancel page-break
+% \newcommand{\ppause}{\pause} % do page-break
+
+
+% ========
+\begin{document}
+
+% cover
+\maketitle
+
+% main chapter
+\setbeamertemplate{frame footer}{Weekly Report}
+\input{main.tex}
+
+% references
+\begin{frame}[allowframebreaks]{参考文献}
+  \printbibliography
+\end{frame}
+
+\end{document}
