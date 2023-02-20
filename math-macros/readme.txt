@@ -1,1 +1,1 @@
-This is a test demo for "styles/my-macros.sty" which is consist of some useful macro commands in math.
+This is a test demo for "styles/math-macros.sty" which is consist of some useful macro commands in math.
