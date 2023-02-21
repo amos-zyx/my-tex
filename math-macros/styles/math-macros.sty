@@ -6,7 +6,13 @@
 \newcommand{\argmax}{\mathop{\arg\max}}
 
 % dx
-\newcommand{\diff}{\mathop{\,\mathrm{d}}}
+\newcommand{\diff}{\,\mathrm{d}}
+
+% kronecker product
+\newcommand{\kron}{\otimes}
+
+% def
+\newcommand{\eqdef}{\mathop{\overset{\text{def}}{=}}}
 
 
 % ======== bracket
@@ -14,8 +20,8 @@
 \newcommand{\norm}[1]{\mathop{\left\| #1 \right\|}}
 
 % set
-\newcommand{\set}[2]{\mathop{\{ #1 \;|\; #2 \}}}
-% \newcommand{\set}[2]{\mathop{\{ #1 : #2 \}}}
+\newcommand{\set}[2]{\mathop{\left\{ #1 \;|\; #2 \right\}}}
+% \newcommand{\set}[2]{\mathop{\left\{ #1 : #2 \right\}}}
 
 % inner product
 \newcommand{\inprod}[2]{\mathop{\left\langle #1, #2 \right\rangle}}
@@ -24,21 +30,26 @@
 
 % ======== letter
 % == warning: please ensure \mathbb{}, \mathscr{}, \mathcal{} has been defined 
-% set letter
-\newcommand{\setl}[1]{\mathop{\mathbb{#1}}}
+% set
+\newcommand{\setl}[1]{\mathbb{#1}}
 
-% set family letter
+% set family
 % \RequirePackage{eucal} % redefine \mathscr{}
-\newcommand{\setfaml}[1]{\mathop{\mathscr{#1}}}
+\newcommand{\setfaml}[1]{\mathscr{#1}}
 
-% mapl letter
+% mapl
 % \RequirePackage{mathrsfs} % redefine \mathcal{}
-\newcommand{\mapl}[1]{\mathop{\mathcal{#1}}}
+\newcommand{\mapl}[1]{\mathcal{#1}}
+
+% bold text
+\renewcommand{\inf}{\mathbf{Inf}}
+\newcommand{\ima}{\mathbf{Im}}
+\renewcommand{\ker}{\mathbf{Ker}}
 
 
 % ======== abbreviation words in math
-\newcommand{\abbreviation}[2]{\mathop{\mathbf{#1}\left( #2 \right)}}
-% \newcommand{\abbreviation}[2]{\mathop{\mathbf{#1}\, #2 }}
+\newcommand{\abbreviation}[2]{\mathbf{#1}\left( #2 \right)}
+% \newcommand{\abbreviation}[2]{\mathbf{#1}\, #2}
 
 \newcommand{\dom}[1]{\abbreviation{dom}{#1}}
 \renewcommand{\div}[1]{\abbreviation{div}{#1}}
