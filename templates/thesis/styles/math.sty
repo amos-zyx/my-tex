@@ -1,0 +1,93 @@
+%# math-style
+
+\RequirePackage{amsmath,amssymb}
+\RequirePackage{bm}
+
+% \RequirePackage{mathtools}
+% \RequirePackage{cleveref} % 更高级的交叉引用
+
+
+%% theorem, def, proof
+\RequirePackage{amsthm,thmtools}  % thmtools -> 提供了修改 amsthm 定理环境的接口
+
+% theorem
+\declaretheoremstyle[
+  headindent=2em,
+  headpunct={},
+  notefont=\bfseries,
+  bodyfont=\it, % 定理环境下，字体采用斜体
+  postheadspace=1em
+]{myth} % 定理环境下，字体采用斜体
+
+\declaretheorem[name=定理,style=myth,numberwithin=section]{theorem} % numberwithin(default: section -> 按章节编号)
+\declaretheorem[name=引理,style=myth,numberwithin=section]{lemma}
+\declaretheorem[name=命题,style=myth,numberwithin=section]{proposition}
+\declaretheorem[name=推论,style=myth,numberwithin=section]{corollary}
+
+% definition
+\declaretheoremstyle[
+  headindent=2em,
+  headpunct={},
+  notefont=\bfseries,
+  % bodyfont=\it, % 定义环境下，字体不采用斜体
+  postheadspace=1em
+]{mydef}
+
+\declaretheorem[name=定义,style=mydef,numberwithin=section]{definition}
+\declaretheorem[name=注,style=mydef,numberwithin=section]{remark}
+\declaretheorem[name=例,style=mydef]{example}
+
+% proof
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+\pushQED{\qed}%
+\normalfont \topsep6\p@\@plus6\p@\relax
+\trivlist
+\item\relax
+{\hspace{2em}\bfseries\itshape
+#1\@addpunct{}\hspace{0.5em} % proof start with: "\proofname(#1) + 标记符号(e.g \@addpunct{:})"
+}\hspace\labelsep\ignorespaces
+}{%
+\popQED\endtrivlist\@endpefalse
+}
+\makeatother
+
+% \qedhere, the end of proof
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+% solution
+\newenvironment{solution}{\begin{proof}[解]}{\end{proof}}
+
+
+%% name with autoref
+% \def\equationautorefname{式}%
+\def\footnoteautorefname{脚注}%
+\def\itemautorefname{项}%
+\def\figureautorefname{图}%
+\def\subfigureautorefname{图}
+\def\tableautorefname{表}%
+\def\partautorefname{篇}%
+\def\appendixautorefname{附录}%
+\def\chapterautorefname{章}%
+\def\sectionautorefname{节}%
+\def\subsectionautorefname{小节}%
+\def\subsubsectionautorefname{subsubsection}%
+\def\paragraphautorefname{段落}%
+\def\subparagraphautorefname{子段落}%
+\def\FancyVerbLineautorefname{行}%
+\def\theoremautorefname{定理}%
+
+
+%% math font
+\RequirePackage{newtxmath}
+
+
+%% other settings
+% more forms with enumerate
+\RequirePackage[inline]{enumitem} % inline provide inline-enumerate environment "enumerate*"
+
+% inline-enumerate with roman number (commonly use in proof)
+\newenvironment{proofenumerate}{\begin{enumerate*}[label=(\bfseries\roman*)]}{\end{enumerate*}}
+
+% more arrows
+\RequirePackage{extarrows}

@@ -1,0 +1,57 @@
+%# some useful math macro commands
+
+% ======== math operators
+% argmin, argmax
+\newcommand{\argmin}{\mathop{\arg\min}}
+\newcommand{\argmax}{\mathop{\arg\max}}
+
+% dx
+\newcommand{\diff}{\,\mathrm{d}}
+
+% kronecker product
+\newcommand{\kron}{\otimes}
+
+% def
+\newcommand{\eqdef}{\mathop{\overset{\text{def}}{=}}}
+
+
+% ======== bracket
+\newcommand{\abs}[1]{\mathop{\left| #1 \right|}}
+\newcommand{\norm}[1]{\mathop{\left\| #1 \right\|}}
+
+% set
+\newcommand{\set}[2]{\mathop{\left\{ #1 \;|\; #2 \right\}}}
+% \newcommand{\set}[2]{\mathop{\left\{ #1 : #2 \right\}}}
+
+% inner product
+\newcommand{\inprod}[2]{\mathop{\left\langle #1, #2 \right\rangle}}
+% \newcommand{\inprod}[2]{\mathop{#1 ^T #2}}
+
+
+% ======== letter
+% == warning: please ensure \mathbb{}, \mathscr{}, \mathcal{} has been defined 
+% set
+\newcommand{\setl}[1]{\mathbb{#1}}
+
+% set family
+% \RequirePackage{eucal} % redefine \mathscr{}
+\newcommand{\setfaml}[1]{\mathscr{#1}}
+
+% mapl
+% \RequirePackage{mathrsfs} % redefine \mathcal{}
+\newcommand{\mapl}[1]{\mathcal{#1}}
+
+% bold text
+\renewcommand{\inf}{\mathbf{Inf}}
+\newcommand{\ima}{\mathbf{Im}}
+\renewcommand{\ker}{\mathbf{Ker}}
+
+
+% ======== abbreviation words in math
+\newcommand{\abbreviation}[2]{\mathbf{#1}\left( #2 \right)}
+% \newcommand{\abbreviation}[2]{\mathbf{#1}\, #2}
+
+\newcommand{\dom}[1]{\abbreviation{dom}{#1}}
+\renewcommand{\div}[1]{\abbreviation{div}{#1}}
+\newcommand{\aff}[1]{\abbreviation{aff}{#1}}
+\newcommand{\epi}[1]{\abbreviation{epi}{#1}}

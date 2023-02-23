@@ -1,0 +1,66 @@
+% basic of optimizaiton，优化基础知识
+\renewcommand{\b}{\vec{b}}
+\newcommand{\x}{\vec{x}}
+
+\begin{proposition}
+    给定实对称矩阵 $Q\in\setl{R}^{n\times n}$，向量 $\b\in\setl{R}^n$，
+    证明：$\inf_{\x\in\setl{R}^n} \frac{1}{2} \x^T Q\x + \b^T \x > -\infty \iff Q$ 半正定，$\b\in \ima(Q)$.
+\end{proposition}
+
+\begin{proof}
+    记 $q(\x)\eqdef \frac{1}{2} \x^T Q\x + \b^T \x$. 应该注意到，定义域 $\setl{R}^n$ 是线性空间，
+    因此可先考虑 $q(\x)$ 在单位球面 $B \eqdef \set{\x\in\setl{R}^n}{\norm{\x}_2 = 1}$ 上的值，再根据数乘 $t\x\; (t>0)$ 估计\footnote{这里提到的估计方法是，二次项的值关于数乘的倍数 $t$ 的变化速度远大于一次项的变化速度. }二次型在整个定义域内的值. 
+
+    \nextproofphase
+    首先说明 $Q$ 应该是半正定的. 假设 $Q$ 不满足半正定，那么存在 $\x_0\in B$，使得 $\frac{1}{2} \x_0^T Q \x_0 < 0$. 
+    根据极限
+    \begin{equation}
+        \lim_{t} q(t\x_0) = \left( \frac{1}{2} \x_0^T Q\x_0 \right) t^2 + \left( \b^T\x_0 \right) t = -\infty,
+    \end{equation}
+    引出了矛盾，因此 $Q$ 半正定.
+    
+    \nextproofphase
+    在继续证明之前，可以对结论左边进行化简
+    \begin{equation}
+        \inf_{\x\in\setl{R}^n} q(\x) > -\infty \iff \forall x\in B, \;\text{若}\; \frac{1}{2} \x^T Q\x = 0, \;\text{那么}\; \b^T x = 0.
+    \end{equation}
+    因此只需证明
+    \begin{equation}\label{toprove}
+        \text{若}\; \frac{1}{2} \x^T Q\x = 0, \;\text{那么}\; \b^T x = 0 \iff \b\in \ima(Q).
+    \end{equation}
+    因为 $Q$ 是对称矩阵，它满足 $\ker(Q) = \ima(Q)^{\bot}$. 
+    $(\Rightarrow)$，任意选取 $\x\in\ker (Q)$，那么 $Q\x = 0$，根据 \eqref{toprove} 的左边立即有 $\b^T x = 0$，根据正交补的性质，$\b \in \ima (Q)$.
+    $(\Leftarrow)$，注意到证明 \eqref{toprove} 的左边时只要求了 $\b\in\ima(Q)$，因此这等价于证明：对于对称半正定矩阵 $Q$，满足关系
+    \begin{equation}\label{toprove2}
+        \x^T Q\x = 0 \Longrightarrow \x\in\ker(Q).
+    \end{equation}
+    
+    \nextproofphase
+    接下来将完成 \eqref{toprove2} 的证明.
+    根据正交补空间的性质，$\x$ 可以唯一地被表示
+    \begin{equation*}
+        \x = \x_1 + \x_2,\quad \x_1\in\ima(Q),\, \x_2\in\ker(Q).
+    \end{equation*}
+    需要注意到两个事实，
+    \begin{enumerate}[nosep]
+        \item $\x\in\ker(Q) \iff \x_1 = 0$;
+        \item $\x^T Q \x = \left( \x_1 + \x_2 \right)^T Q \left( \x_1 + \x_2 \right) = \left( \x_1 + \x_2 \right)^T Q \x_1 = \x_1^T Q \x_1.$
+    \end{enumerate}
+    因此要证明 \eqref{toprove2} 等价于证明：对于 $\x_1\in\ima(Q)$，满足关系
+    \begin{equation*}
+        \x_1^T Q \x_1 = 0 \Longrightarrow \x_1 = 0,
+    \end{equation*}
+    或者等价于证明它的逆否命题
+    \begin{equation}\label{toprove3}
+        \x_1 \in \ima(Q)\setminus \{0\} \Longrightarrow \x_1^T Q \x_1 \neq 0.
+    \end{equation}
+    不妨设 $\ima(Q)\setminus \{0\}$ 非空，取 $\x_1 \in \ima(Q)\setminus \{0\}$. 对称半正定矩阵 $Q$ 存在正的特征值 $\lambda_i > 0\, (1\leq i\leq s)$，记特征值 $\lambda_i$ 对应的特征向量为 $\alpha_{ij}$，
+    因此可以写出 $\x_1$ 关于特征子空间的分解 $\x_1 = \sum_{i,j} k_{ij}\alpha_{ij}$ ($k_{ij}$ 不全为 0).
+    \begin{equation*}
+        \x_1^T Q \x_1 = \left( \sum_{i,j} k_{ij}\alpha_{ij} \right)^T Q \left( \sum_{i,j} k_{ij}\alpha_{ij} \right) 
+        = \left( \sum_{i} \sum_{j} k_{ij}\alpha_{ij} \right)^T \left( \sum_{i} \lambda_i \sum_{j} k_{ij}\alpha_{ij} \right)
+        = \sum_i \lambda_i \norm{\sum_{j} k_{ij}\alpha_{ij}}^2
+        > 0.
+    \end{equation*}
+    至此已经证明了 \eqref{toprove3} 成立. 
+\end{proof}

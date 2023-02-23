@@ -1,0 +1,76 @@
+\documentclass[no-math]{styles/thesis}
+
+% math-style
+\usepackage{styles/math}
+
+% add input-path
+\addinputpath{contents/}
+
+% print code
+\usepackage{minted} % run with -shell-escape
+
+% image
+% \usepackage{graphicx,subfigure}
+% \graphicspath{{images/}}
+
+% table
+% \usepackage{tabu,booktabs,multirow}
+% \usepackage{diagbox}
+
+% numbering
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+
+% references
+\usepackage{biblatex} % with biblatex(biber)
+\addbibresource{refs.bib}
+% //TODO: 参考文献未能添加至目录中
+% \defbibheading{bibnumbered}{\section{#1}}
+
+% my math-macros
+\usepackage{styles/math-macros}
+
+% cover
+\title{Title of Thesis}
+\author{周宇轩}
+\date{\today}
+
+
+\newcommand{\nextproofphase}{\noindent \rule[3pt]{\textwidth}{0.05em} \par}
+% ie, st
+\newcommand{\ie}{\;\textbf{i.e.}\;}
+\newcommand{\st}{\;\textbf{s.t.}\;}
+
+
+% ========
+\begin{document}
+
+%% cover
+\maketitle
+\thispagestyle{empty}
+\newpage
+
+%% table of contents
+\tableofcontents
+\thispagestyle{empty}
+
+%% the first page
+\newpage
+\setcounter{page}{1}
+
+%% include chapter or section
+\section{Paragraph}
+\input{paragraph}
+
+\section{Math}
+\input{optim}
+
+\section{Code}
+\inputminted{python}{contents/code.py}
+
+%% 参考文献
+\nocite{*}
+\printbibliography
+
+\end{document}
